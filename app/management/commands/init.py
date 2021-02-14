@@ -5,7 +5,7 @@ from app.models import GameRound
 
 
 class Command(BaseCommand):
-    help = 'Install groups'
+    help = 'Install groups and game rounds'
 
     def handle(self, *args, **options):
         admin = Group(name='Admin')
@@ -17,7 +17,9 @@ class Command(BaseCommand):
         player = Group(name='Player')
         player.save()
         self.stdout.write(self.style.SUCCESS('Player group created'))
-        User.objects.create_user(username='admin', email='norely@localhost.org', is_staff=True, password='adminadmin')
+        admin_user = User.objects.create_user(username='admin', email='norely@localhost.org', is_staff=True,
+                                              password='adminadmin')
+        admin.user_set.add(admin_user)
         self.stdout.write(self.style.SUCCESS('Admin user created'))
         quarter_final = GameRound(name='Quarter Final')
         quarter_final.save()

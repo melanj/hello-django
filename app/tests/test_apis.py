@@ -1,9 +1,11 @@
+import base64
 import json
 
 from django.contrib.auth.models import Group, User
-from django.test import TestCase
 from django.test import Client
-import base64
+from django.test import TestCase
+
+from app.models import GameRound
 
 client = Client()
 auth_headers = {
@@ -12,7 +14,7 @@ auth_headers = {
 
 
 class TestAllApis(TestCase):
-    """ Test module for GET all puppies API """
+    """ Test module for GET test all API """
 
     def setUp(self):
         admin = Group(name='Admin')
@@ -21,7 +23,16 @@ class TestAllApis(TestCase):
         coach.save()
         player = Group(name='Player')
         player.save()
-        User.objects.create_user(username='admin', email='norely@localhost.org', is_staff=True, password='adminadmin')
+        admin_user = User.objects.create_user(username='admin', email='norely@localhost.org', is_staff=True,
+                                              password='adminadmin')
+        admin.user_set.add(admin_user)
+
+        quarter_final = GameRound(name='Quarter Final')
+        quarter_final.save()
+        semi_final = GameRound(name='Semi Final')
+        semi_final.save()
+        final = GameRound(name='Final')
+        final.save()
 
     def test_list_all_user(self):
         # get users response
