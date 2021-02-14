@@ -76,6 +76,8 @@ result:
 }
  ```
 
+**API details**
+
 | Prefix       | Description  | Create             | Read               | Update             | Delete             |
 |--------------|--------------|--------------------|--------------------|--------------------|--------------------|
 | users        | Manage users        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -90,7 +92,7 @@ result:
 | team-stats   | Manage team statistics   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 
-teams API has an additional feature to average score is in the 90 percentile across the team
+teams API has an additional feature to view list of players having average score more than 90% across the team
 /teams/<team_id>/best_players/
 
 eg.
@@ -129,7 +131,6 @@ result:
     "team": "http://127.0.0.1:8000/teams/9/",
     "height": 186,
     "average": 1.25
-  },
-..........
+  }
 ]
  ```
