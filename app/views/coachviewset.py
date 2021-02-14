@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from app.models import Coach
 from app.serializers import CoachSerializer
@@ -11,4 +11,4 @@ class CoachViewSet(viewsets.ModelViewSet):
     """
     queryset = Coach.objects.all().order_by('-id')
     serializer_class = CoachSerializer
-    permission_classes = [IsCoach]
+    permission_classes = [IsCoach | permissions.IsAdminUser]

@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from app.models import Game
 from app.serializers import GameSerializer
@@ -11,4 +11,4 @@ class GameViewSet(viewsets.ModelViewSet):
     """
     queryset = Game.objects.all().order_by('-id')
     serializer_class = GameSerializer
-    permission_classes = [IsCoach]
+    permission_classes = [IsCoach | permissions.IsAdminUser]

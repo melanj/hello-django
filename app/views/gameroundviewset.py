@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from app.models import GameRound
 from app.serializers import GameRoundSerializer
@@ -11,4 +11,4 @@ class GameRoundViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = GameRound.objects.all().order_by('-id')
     serializer_class = GameRoundSerializer
-    permission_classes = [IsCoach]
+    permission_classes = [IsCoach | permissions.IsAdminUser]

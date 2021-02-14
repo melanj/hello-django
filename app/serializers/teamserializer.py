@@ -6,3 +6,4 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Team
         fields = ['url', 'name']
+        read_only_fields = ['name']

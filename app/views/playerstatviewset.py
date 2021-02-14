@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from app.models import PlayerStat
 from app.serializers import PlayerStatSerializer
@@ -11,4 +11,4 @@ class PlayerStatViewSet(viewsets.ModelViewSet):
     """
     queryset = PlayerStat.objects.all().order_by('-id')
     serializer_class = PlayerStatSerializer
-    permission_classes = [IsCoach]
+    permission_classes = [IsCoach | permissions.IsAdminUser]
