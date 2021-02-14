@@ -35,6 +35,11 @@ run init command to create admin account and other requited groups (user types),
 python3 manage.py init
 ```
 
+:sunrise: if you wish use following command to populate dummy data set 
+```bash
+python3 manage.py dummy_data_setup
+```
+
 run runserver command to run the development server
 ```bash
 python3 manage.py runserver

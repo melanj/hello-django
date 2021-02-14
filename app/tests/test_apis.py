@@ -27,6 +27,8 @@ class TestAllApis(TestCase):
                                               password='adminadmin')
         admin.user_set.add(admin_user)
 
+        first_round = GameRound(name='First Round')
+        first_round.save()
         quarter_final = GameRound(name='Quarter Final')
         quarter_final.save()
         semi_final = GameRound(name='Semi Final')
